@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.mindjobcard.exception.ResourceNotFoundException;
 import com.example.mindjobcard.model.Role;
 import com.example.mindjobcard.model.User;
 import com.example.mindjobcard.service.RoleService;
@@ -99,4 +100,31 @@ public class UserController {
 			return ResponseEntity.notFound().build();
 		}
 	}
+	
+	@PutMapping("/usersrole/{id}")
+	public ResponseEntity<User> updateUserRoles(@PathVariable Long id, @RequestBody User updateUser) {
+		
+		User user = userService.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("User"+id));
+		
+		user.setUsername(updateUser.getUsername());
+		user.setContactNo(updateUser.getContactNo());
+		user.setEmail(updateUser.getEmail());
+		
+		
+		for(Role role : updateUser.getRoles()) {
+			
+			Optional<Role> existingRole = roleService.findByRole(role.getRole());
+			if(!existingRole.isPresent()) {
+				throw new ResourceNotFoundException("Role"+ role.getRole());
+			}
+			if(!user.getRoles().contains(existingRole.get())) {
+				user.getRoles().add(existingRole.get());
+			}
+		}
+		
+		User updated = userService.saveuser(user);
+		return ResponseEntity.ok(updated);
+	}
+	
 }
