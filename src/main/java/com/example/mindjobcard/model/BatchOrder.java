@@ -24,7 +24,7 @@ public class BatchOrder {
 	@Column(name = "company_person")
 	private String companyPerson;
 	
-	@Column(name = "assembly")
+	@Column(name = "Item")
 	private String Item;
 	
 	@Column(name = "raw_material")
@@ -36,31 +36,31 @@ public class BatchOrder {
 	@Column(name = "assembly")
 	private String Assembly;
 	
-	@Column(name = "assembly")
+	@Column(name = "purchaseQty")
 	private int purchaseQty;
 	
-	@Column(name = "assembly")
+	@Column(name = "purchaseNo")
 	private int purchaseNo;
 	
-	@Column(name = "assembly")
+	@Column(name = "purchaseDate")
 	private Date purchaseDate;
 	
-	@Column(name = "assembly")
+	@Column(name = "StartDate")
 	private Date StartDate;
 	
-	@Column(name = "assembly")
+	@Column(name = "priority")
 	private int priority;
 	
-	@Column(name = "assembly")
+	@Column(name = "productionQty")
 	private int productionQty;
 	
-	@Column(name = "assembly")
+	@Column(name = "issueDate")
 	private Date issueDate;
 	
-	@Column(name = "assembly")
+	@Column(name = "accurateQty")
 	private int accurateQty;
 	
-	@Column(name = "assembly")
+	@Column(name = "rejectedQty")
 	private int rejectedQty;
 	
 }
