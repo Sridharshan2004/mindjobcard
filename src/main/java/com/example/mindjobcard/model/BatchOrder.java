@@ -24,8 +24,8 @@ public class BatchOrder {
 	@Column(name = "company_person")
 	private String companyPerson;
 	
-	@Column(name = "Item")
-	private String Item;
+	@Column(name = "item")
+	private String item;
 	
 	@Column(name = "raw_material")
 	private String rawMaterial;
@@ -34,33 +34,161 @@ public class BatchOrder {
 	private String finSize;
 	
 	@Column(name = "assembly")
-	private String Assembly;
+	private String assembly;
 	
-	@Column(name = "purchaseQty")
+	@Column(name = "purchase_qty")
 	private int purchaseQty;
 	
-	@Column(name = "purchaseNo")
-	private int purchaseNo;
+	@Column(name = "purchase_no")
+	private String purchaseNo;
 	
-	@Column(name = "purchaseDate")
+	@Column(name = "purchase_date")
 	private Date purchaseDate;
 	
-	@Column(name = "StartDate")
-	private Date StartDate;
+	@Column(name = "start_date")
+	private Date startDate;
 	
 	@Column(name = "priority")
 	private int priority;
 	
-	@Column(name = "productionQty")
+	@Column(name = "production_qty")
 	private int productionQty;
 	
-	@Column(name = "issueDate")
+	@Column(name = "issue_date")
 	private Date issueDate;
 	
-	@Column(name = "accurateQty")
+	@Column(name = "accurate_qty")
 	private int accurateQty;
 	
-	@Column(name = "rejectedQty")
+	@Column(name = "rejected_qty")
 	private int rejectedQty;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getComapanyName() {
+		return comapanyName;
+	}
+
+	public void setComapanyName(String comapanyName) {
+		this.comapanyName = comapanyName;
+	}
+
+	public String getCompanyPerson() {
+		return companyPerson;
+	}
+
+	public void setCompanyPerson(String companyPerson) {
+		this.companyPerson = companyPerson;
+	}
+
+	public String getItem() {
+		return item;
+	}
+
+	public void setItem(String item) {
+		this.item = item;
+	}
+
+	public String getRawMaterial() {
+		return rawMaterial;
+	}
+
+	public void setRawMaterial(String rawMaterial) {
+		this.rawMaterial = rawMaterial;
+	}
+
+	public String getFinSize() {
+		return finSize;
+	}
+
+	public void setFinSize(String finSize) {
+		this.finSize = finSize;
+	}
+
+	public String getAssembly() {
+		return assembly;
+	}
+
+	public void setAssembly(String assembly) {
+		this.assembly = assembly;
+	}
+
+	public int getPurchaseQty() {
+		return purchaseQty;
+	}
+
+	public void setPurchaseQty(int purchaseQty) {
+		this.purchaseQty = purchaseQty;
+	}
+
+	public String getPurchaseNo() {
+		return purchaseNo;
+	}
+
+	public void setPurchaseNo(String purchaseNo) {
+		this.purchaseNo = purchaseNo;
+	}
+
+	public Date getPurchaseDate() {
+		return purchaseDate;
+	}
+
+	public void setPurchaseDate(Date purchaseDate) {
+		this.purchaseDate = purchaseDate;
+	}
+
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public int getPriority() {
+		return priority;
+	}
+
+	public void setPriority(int priority) {
+		this.priority = priority;
+	}
+
+	public int getProductionQty() {
+		return productionQty;
+	}
+
+	public void setProductionQty(int productionQty) {
+		this.productionQty = productionQty;
+	}
+
+	public Date getIssueDate() {
+		return issueDate;
+	}
+
+	public void setIssueDate(Date issueDate) {
+		this.issueDate = issueDate;
+	}
+
+	public int getAccurateQty() {
+		return accurateQty;
+	}
+
+	public void setAccurateQty(int accurateQty) {
+		this.accurateQty = accurateQty;
+	}
+
+	public int getRejectedQty() {
+		return rejectedQty;
+	}
+
+	public void setRejectedQty(int rejectedQty) {
+		this.rejectedQty = rejectedQty;
+	}
 	
 }
