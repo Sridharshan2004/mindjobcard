@@ -14,5 +14,8 @@ public interface BatchOrderService {
 	Optional<BatchOrder> findById(Long id);
 	
 	void deleteById(Long id);
-
+	
+	Boolean existsById(Long id);
+	
+	void delete(BatchOrder batchOrder);
 }

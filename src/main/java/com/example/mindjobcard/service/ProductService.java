@@ -14,5 +14,9 @@ public interface ProductService {
 	Optional<Product> findById(Long id);
 	
 	void deleteById(Long id);
+	
+	Boolean existsById(Long id);
+	
+	boolean existsByProductName(String name);
 
 }

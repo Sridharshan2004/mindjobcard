@@ -17,8 +17,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.mindjobcard.exception.ResourceNotFoundException;
 import com.example.mindjobcard.model.BatchOrder;
+import com.example.mindjobcard.model.TaskList;
 import com.example.mindjobcard.service.BatchOrderService;
+import com.example.mindjobcard.service.TaskListService;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -27,6 +30,9 @@ public class BatchOrderController {
 	
 	@Autowired
 	private BatchOrderService batchOrderService;
+	
+	@Autowired
+	private TaskListService taskListService;
 	
 	@PostMapping("/batchorder")
 	public ResponseEntity<BatchOrder> saveBatchOrder(@RequestBody BatchOrder batchOrder) {
@@ -90,10 +96,19 @@ public class BatchOrderController {
 		}
 	}
 	
+
 	@DeleteMapping("/batchorder/{id}")
-	public ResponseEntity<BatchOrder> deleteById(@PathVariable Long id) {
-		batchOrderService.deleteById(id);
+	public ResponseEntity<BatchOrder> deleteBatchOrder(@PathVariable Long id) {
+		
+		BatchOrder batchOrder = batchOrderService.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("BATCHORDER NOT FOUND"));
+		
+		List<TaskList> taskLists = taskListService.findByBatchOrderId(id);
+		for(TaskList taskList : taskLists) {
+			taskListService.deleteById(taskList.getId());
+		}
+		
+		batchOrderService.delete(batchOrder);
 		return new ResponseEntity<BatchOrder>(HttpStatus.OK);
 	}
-
 }

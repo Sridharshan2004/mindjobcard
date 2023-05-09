@@ -31,4 +31,9 @@ public class RoleServiceImpl implements RoleService{
 		return roleRepository.findById(id);
 	}
 
+	@Override
+	public Boolean existsById(int id) {
+		return roleRepository.existsById(id);
+	}
+
 }

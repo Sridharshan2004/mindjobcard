@@ -20,5 +20,7 @@ public interface UserService {
 	void deleteById(Long id);
 	
 	Optional<User> findById(Long id);
+	
+	List<User> findUsersByRolesId(int id);
 
 }

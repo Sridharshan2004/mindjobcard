@@ -17,4 +17,7 @@ public interface OperationService {
 	
 	void delete(Operation operation);
 
+	List<Operation> findOperationsByProductsId(Long id);
+	
+	List<Operation> findOperationsByProductsProductName(String name);
 }

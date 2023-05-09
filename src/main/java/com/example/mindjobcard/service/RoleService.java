@@ -13,4 +13,6 @@ public interface RoleService {
 	Optional<Role> findById(int id);
 	
 	List<Role> getAllRole();
+	
+	Boolean existsById(int id);
 }

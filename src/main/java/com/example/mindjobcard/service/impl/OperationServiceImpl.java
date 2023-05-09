@@ -41,4 +41,14 @@ public class OperationServiceImpl implements OperationService{
 		operationRepository.delete(operation);
 	}
 
+	@Override
+	public List<Operation> findOperationsByProductsId(Long id) {
+		return operationRepository.findOperationsByProductsId(id);
+	}
+
+	@Override
+	public List<Operation> findOperationsByProductsProductName(String name) {
+		return operationRepository.findOperationsByProductsProductName(name);
+	}
+
 }

@@ -73,6 +73,28 @@ public class OperationController {
 		}
 	}
 	
+	@GetMapping("/product/{id}/operation")
+	public ResponseEntity<List<Operation>> getAllOperationsByProductId(@PathVariable Long id) {
+		
+		if(!productService.existsById(id) ) {
+			throw new ResourceNotFoundException("Product not found");
+		}
+		
+		List<Operation> operations = operationService.findOperationsByProductsId(id);
+		return new ResponseEntity<List<Operation>>(operations,HttpStatus.OK);
+	}
+	
+	@GetMapping("/products/{id}/operation")
+	public ResponseEntity<List<Operation>> getAllOperationsByProductName(@PathVariable String id) {
+		
+		if(!productService.existsByProductName(id) ) {
+			throw new ResourceNotFoundException("Product not found");
+		}
+		
+		List<Operation> operations = operationService.findOperationsByProductsProductName(id);
+		return new ResponseEntity<List<Operation>>(operations,HttpStatus.OK);
+	}
+	
 	@PutMapping("/operation/{id}")
 	public ResponseEntity<Operation> updateOperation(@PathVariable Long id, @RequestBody Operation updateOperation) {
 		

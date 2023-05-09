@@ -11,4 +11,5 @@ import com.example.mindjobcard.model.Role;
 public interface RoleRepository extends JpaRepository<Role, Integer>{
 
 	Optional<Role> findByRole(String role);
+	
 }

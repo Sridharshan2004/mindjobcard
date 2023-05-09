@@ -36,4 +36,14 @@ public class BatchOrderServiceImpl implements BatchOrderService{
 		batchOrderRepository.deleteById(id);
 	}
 
+	@Override
+	public Boolean existsById(Long id) {
+		return batchOrderRepository.existsById(id);
+	}
+
+	@Override
+	public void delete(BatchOrder batchOrder) {
+		batchOrderRepository.delete(batchOrder);
+	}
+
 }
