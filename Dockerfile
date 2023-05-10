@@ -1,4 +1,5 @@
-FROM openjdk:11
-ADD target/mindjobcard-0.0.1-SNAPSHOT.jar mindjobcard.jar
+FROM adoptopenjdk/openjdk11:alpine-slim 
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} app.jar
 EXPOSE 8081
-ENTRYPOINT [“java”,”-jar”,”/mindjobcard.jar”]
+ENTRYPOINT ["java","-jar","/app.jar"]
