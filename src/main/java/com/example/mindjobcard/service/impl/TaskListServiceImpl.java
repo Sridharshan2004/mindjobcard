@@ -46,4 +46,14 @@ public class TaskListServiceImpl implements TaskListService{
 		return taskListRepository.findByPerson(name);
 	}
 
+	@Override
+	public List<TaskList> findByPersonAndStatusIsNot(String name, String status) {
+		return taskListRepository.findByPersonAndStatusIsNot(name, status);
+	}
+
+	@Override
+	public List<TaskList> findByPersonAndStatusNot(String name, String status) {
+		return taskListRepository.findByPersonAndStatusNot(name, status);
+	}
+
 }

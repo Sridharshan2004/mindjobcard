@@ -18,4 +18,8 @@ public interface TaskListService {
 	List<TaskList> findByBatchOrderId(Long id);
 	
 	List<TaskList>findByPerson(String name);
+	
+	List<TaskList> findByPersonAndStatusIsNot(String name, String status);
+	
+	List<TaskList> findByPersonAndStatusNot(String name, String status);
 }

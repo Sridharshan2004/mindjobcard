@@ -69,6 +69,36 @@ public class TaskListController {
 		}
 	}
 	
+	@GetMapping("/tasklist/status/{id}")
+	public ResponseEntity<List<TaskList>> getTaskListByPersonAndStatus(@PathVariable String id) {
+		
+		List<TaskList> taskLists = new ArrayList<TaskList>();
+		
+		taskListService.findByPersonAndStatusIsNot(id,"Finished").forEach(taskLists::add);
+		
+		if(taskLists.isEmpty()) {
+			return new ResponseEntity<List<TaskList>>(HttpStatus.NO_CONTENT);
+		}
+		else {
+			return new ResponseEntity<List<TaskList>>(taskLists,HttpStatus.OK);
+		}
+	}
+	
+	@GetMapping("/tasklist/status/fin/{id}")
+	public ResponseEntity<List<TaskList>> getTaskListByPersonAndStatusfin(@PathVariable String id) {
+		
+		List<TaskList> taskLists = new ArrayList<TaskList>();
+		
+		taskListService.findByPersonAndStatusNot(id,"Finished").forEach(taskLists::add);
+		
+		if(taskLists.isEmpty()) {
+			return new ResponseEntity<List<TaskList>>(HttpStatus.NO_CONTENT);
+		}
+		else {
+			return new ResponseEntity<List<TaskList>>(taskLists,HttpStatus.OK);
+		}
+	}
+	
 	@GetMapping("tasklist/id/{id}")
 	public ResponseEntity<TaskList> getById(@PathVariable Long id) {
 		
