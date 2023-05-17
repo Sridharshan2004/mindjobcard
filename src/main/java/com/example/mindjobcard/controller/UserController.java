@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.mindjobcard.dto.MessageResponse;
 import com.example.mindjobcard.exception.ResourceNotFoundException;
 import com.example.mindjobcard.model.Role;
 import com.example.mindjobcard.model.User;
@@ -33,6 +35,9 @@ public class UserController {
 	
 	@Autowired
 	RoleService roleService;
+	
+	@Autowired
+	PasswordEncoder encoder;
 	
 	@GetMapping("/user")
 	public ResponseEntity<List<User>> getAllUser() {
@@ -78,6 +83,26 @@ public class UserController {
 			return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
 		}
 
+	}
+	
+	@PutMapping("/user/forgotpassword/{id}")
+	public ResponseEntity<?> updateUserPassword(@PathVariable String id, @RequestBody User userdata) {
+		
+		if(userService.existsByEmail(id)) {
+			Optional<User> finduser = userService.findByEmail(id);
+			
+			if(finduser.isPresent()) {
+				User user = finduser.get();
+				user.setPassword(encoder.encode(userdata.getPassword()));
+				return new ResponseEntity<User>(userService.saveuser(user),HttpStatus.OK);
+			}
+			else {
+				return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+			}
+		}
+		else {
+			return ResponseEntity.badRequest().body(new MessageResponse("ERROR : USERNAME NOT AVAILABLE !..."));
+		}
 	}
 	
 	@DeleteMapping("/user/{id}")
