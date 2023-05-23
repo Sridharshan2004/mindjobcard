@@ -41,4 +41,9 @@ public class MachineServiceImpl implements MachineService{
 		machineRepository.delete(machine);
 	}
 
+	@Override
+	public List<Machine> findMachinesByOperationsOperationName(String name) {
+		return machineRepository.findMachinesByOperationsOperationName(name);
+	}
+
 }

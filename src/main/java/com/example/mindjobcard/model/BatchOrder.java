@@ -62,7 +62,7 @@ public class BatchOrder {
 	
 	@Column(name = "rejected_qty")
 	private int rejectedQty;
-
+	
 	public Long getId() {
 		return id;
 	}

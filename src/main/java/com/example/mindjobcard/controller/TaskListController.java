@@ -128,6 +128,7 @@ public class TaskListController {
 		taskList.setQuantity(taskListUpdate.getQuantity());
 		taskList.setPerson(taskListUpdate.getPerson());
 		taskList.setStatus(taskListUpdate.getStatus());
+		taskList.setMachine(taskListUpdate.getMachine());
 		
 		return new ResponseEntity<TaskList>(taskListService.saveTaskList(taskList), HttpStatus.OK);
 	}

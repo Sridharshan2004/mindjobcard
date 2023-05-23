@@ -90,6 +90,17 @@ public class MachineController {
 		}
 	}
 	
+	@GetMapping("/operation/{id}/machine")
+	public ResponseEntity<List<Machine>> getAllMachinesByOperationName(@PathVariable String id) {
+	
+		if(!operationService.existsByOperationName(id)) {
+			throw new ResourceNotFoundException("Operation not found");
+		}
+		
+		List<Machine> machines = machineService.findMachinesByOperationsOperationName(id);
+		return new ResponseEntity<List<Machine>>(machines, HttpStatus.OK);
+	}
+	
 	@PutMapping("/machine/{id}")
 	public ResponseEntity<Machine> updateMachine(@PathVariable Long id, @RequestBody Machine updateMachine) {
 		

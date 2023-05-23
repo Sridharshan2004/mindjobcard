@@ -13,4 +13,6 @@ public interface OperationRepository extends JpaRepository<Operation, Long>{
 	List<Operation> findOperationsByProductsId(Long id);
 	
 	List<Operation> findOperationsByProductsProductName(String name);
+	
+	boolean existsByOperationName(String name);
 }

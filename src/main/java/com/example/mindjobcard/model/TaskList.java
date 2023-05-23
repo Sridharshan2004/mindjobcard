@@ -26,12 +26,23 @@ public class TaskList {
 	@Column(name = "description")
 	private String description;
 	
+	@Column(name = "machine")
+	private String machine;
+	
 	@Column(name = "specification")
 	private String specification;
 	
 	@Column(name = "standard")
 	private String standard;
 	
+	public String getMachine() {
+		return machine;
+	}
+
+	public void setMachine(String machine) {
+		this.machine = machine;
+	}
+
 	@Column(name = "process")
 	private String process;
 	

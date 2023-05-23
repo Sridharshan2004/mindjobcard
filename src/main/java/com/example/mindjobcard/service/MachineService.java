@@ -16,5 +16,6 @@ public interface MachineService {
 	void deleteById(Long id);
 	
 	void delete(Machine machine);
-
+	
+	List<Machine> findMachinesByOperationsOperationName(String name);
 }

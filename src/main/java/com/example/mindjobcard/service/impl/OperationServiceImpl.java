@@ -51,4 +51,9 @@ public class OperationServiceImpl implements OperationService{
 		return operationRepository.findOperationsByProductsProductName(name);
 	}
 
+	@Override
+	public boolean existsByOperationName(String name) {
+		return operationRepository.existsByOperationName(name);
+	}
+
 }
