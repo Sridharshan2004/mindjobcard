@@ -101,6 +101,8 @@ public class MachineController {
 		return new ResponseEntity<List<Machine>>(machines, HttpStatus.OK);
 	}
 	
+	
+	
 	@PutMapping("/machine/{id}")
 	public ResponseEntity<Machine> updateMachine(@PathVariable Long id, @RequestBody Machine updateMachine) {
 		
