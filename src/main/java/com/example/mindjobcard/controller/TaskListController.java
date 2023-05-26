@@ -1,6 +1,12 @@
 package com.example.mindjobcard.controller;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -67,6 +73,32 @@ public class TaskListController {
 		else {
 			return new ResponseEntity<List<TaskList>>(taskLists,HttpStatus.OK);
 		}
+	}
+	
+	@GetMapping("/runningmachine")
+	public ResponseEntity<List<TaskList>> getTodayRunningMachine() {
+		
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		LocalDateTime today = LocalDateTime.now().withHour(0).withMinute(0).withSecond(0);
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		String searchDate = today.format(dateTimeFormatter);
+		
+		try {
+			Date todaydate = dateFormat.parse(searchDate);
+			System.out.println(today);
+			
+			List<TaskList> taskLists = new ArrayList<TaskList>();
+			
+			taskListService.findByStartDateLessThanEqualAndEndDateGreaterThanEqual(todaydate, todaydate).forEach(taskLists::add);
+			
+			if(!taskLists.isEmpty()) {
+				return new ResponseEntity<List<TaskList>>(taskLists, HttpStatus.OK);
+			}
+		} catch (ParseException e) {
+			
+			return new ResponseEntity<List<TaskList>>(HttpStatus.BAD_REQUEST);
+		}
+		return new ResponseEntity<List<TaskList>>(HttpStatus.NO_CONTENT);
 	}
 	
 	@GetMapping("/tasklist/status/{id}")

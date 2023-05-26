@@ -35,14 +35,6 @@ public class TaskList {
 	@Column(name = "standard")
 	private String standard;
 	
-	public String getMachine() {
-		return machine;
-	}
-
-	public void setMachine(String machine) {
-		this.machine = machine;
-	}
-
 	@Column(name = "process")
 	private String process;
 	
@@ -187,4 +179,11 @@ public class TaskList {
 		this.batchOrder = batchOrder;
 	}
 	
+	public String getMachine() {
+		return machine;
+	}
+
+	public void setMachine(String machine) {
+		this.machine = machine;
+	}
 }

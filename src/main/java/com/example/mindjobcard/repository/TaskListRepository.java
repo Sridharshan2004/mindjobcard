@@ -1,5 +1,6 @@
 package com.example.mindjobcard.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,5 +18,7 @@ public interface TaskListRepository extends JpaRepository<TaskList , Long>{
 	List<TaskList> findByPersonAndStatusIsNot(String name, String status);
 	
 	List<TaskList> findByPersonAndStatusNot(String name, String status);
+	
+	List<TaskList> findByStartDateLessThanEqualAndEndDateGreaterThanEqual(Date startdate, Date enddate);
 	
 }

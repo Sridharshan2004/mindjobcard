@@ -1,5 +1,6 @@
 package com.example.mindjobcard.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,4 +23,6 @@ public interface TaskListService {
 	List<TaskList> findByPersonAndStatusIsNot(String name, String status);
 	
 	List<TaskList> findByPersonAndStatusNot(String name, String status);
+	
+	List<TaskList> findByStartDateLessThanEqualAndEndDateGreaterThanEqual(Date startdate, Date enddate);
 }

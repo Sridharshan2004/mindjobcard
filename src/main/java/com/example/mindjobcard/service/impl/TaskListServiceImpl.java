@@ -1,5 +1,6 @@
 package com.example.mindjobcard.service.impl;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,6 +55,11 @@ public class TaskListServiceImpl implements TaskListService{
 	@Override
 	public List<TaskList> findByPersonAndStatusNot(String name, String status) {
 		return taskListRepository.findByPersonAndStatusNot(name, status);
+	}
+
+	@Override
+	public List<TaskList> findByStartDateLessThanEqualAndEndDateGreaterThanEqual(Date startdate, Date enddate) {
+		return taskListRepository.findByStartDateLessThanEqualAndEndDateGreaterThanEqual(startdate, enddate);
 	}
 
 }
